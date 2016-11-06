@@ -11,9 +11,9 @@
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     die();
 ?>
-<?use Bitrix\Main\Localization\Loc;
+/*<?use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
-Loc::loadMessages(__FILE__);?>
+Loc::loadMessages(__FILE__);?>*/
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -105,7 +105,7 @@ Loc::loadMessages(__FILE__);?>
 
 <body>
 
-
+<div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <!--
 ==================================================
 Header Section Start

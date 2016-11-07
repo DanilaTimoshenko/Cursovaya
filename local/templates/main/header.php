@@ -105,7 +105,7 @@ Loc::loadMessages(__FILE__);?>
 
 <body>
 
-
+<div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <!--
 ==================================================
 Header Section Start
@@ -142,37 +142,22 @@ Header Section Start
             <!-- /logo -->
         </div>
         <!-- main menu -->
-        <nav class="collapse navbar-collapse navbar-right" role="navigation">
-            <div class="main-menu">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html" >Home</a>
-                    </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
-                        <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="404.html">404 Page</a></li>
-                                <li><a href="gallery.html">Gallery</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
-                        <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="blog-fullwidth.html">Blog Full</a></li>
-                                <li><a href="blog-left-sidebar.html">Blog Left sidebar</a></li>
-                                <li><a href="blog-right-sidebar.html">Blog Right sidebar</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-        <!-- /main nav -->
+        <?$APPLICATION->IncludeComponent("bitrix:menu", "top", Array(
+	"ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+		"CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+		"DELAY" => "N",	// Откладывать выполнение шаблона меню
+		"MAX_LEVEL" => "1",	// Уровень вложенности меню
+		"MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+			0 => "",
+		),
+		"MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+		"MENU_CACHE_TYPE" => "N",	// Тип кеширования
+		"MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+		"ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+		"USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+	),
+	false
+);?><br>
+
     </div>
 </header>

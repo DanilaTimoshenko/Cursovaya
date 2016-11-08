@@ -25,22 +25,22 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             <ul class="social">
                 <li>
                     <a href="http://wwww.fb.com/themefisher" class="Facebook">
-                        <i class="ion-social-facebook"></i>
+                        <span class="socialIcons"><img src="images/ic-facebook.png"></span>
                     </a>
                 </li>
                 <li>
                     <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                        <i class="ion-social-twitter"></i>
+                        <span class="socialIcons"><img src="images/ic-twitter.png"></span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="Linkedin">
-                        <i class="ion-social-linkedin"></i>
+                        <span class="socialIcons"><img src="images/ic-linkedin.png"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                        <i class="ion-social-googleplus"></i>
+                    <a href="http://wwww.vk.com/">
+                        <span class="socialIcons"><img src="images/ic-vk.png"></span>
                     </a>
                 </li>
             </ul>

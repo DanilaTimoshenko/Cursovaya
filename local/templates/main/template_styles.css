@@ -1085,3 +1085,7 @@ article {
     color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.socialIcons img {
+    height: 25px;
+    width: 25px;
+}

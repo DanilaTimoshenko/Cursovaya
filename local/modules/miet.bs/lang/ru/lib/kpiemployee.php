@@ -7,9 +7,9 @@
  */
 ?>
 <?
-$MESS["KPI_ENTITY_ID_FIELD"] = "ID BS";
-$MESS["KPI_ENTITY_UF_VALUE_FIELD"] = "Количество штук";
-$MESS["KPI_ENTITY_UF_CREATED_FIELD"] = "Дата внесения количества штук";
-$MESS["KPI_ENTITY_UF_CHANGED_FIELD"] = "Дата последнего изменения
+$MESS["BS_ENTITY_ID_FIELD"] = "ID BS";
+$MESS["BS_ENTITY_UF_VALUE_FIELD"] = "Количество штук";
+$MESS["BS_ENTITY_UF_CREATED_FIELD"] = "Дата внесения количества штук";
+$MESS["BS_ENTITY_UF_CHANGED_FIELD"] = "Дата последнего изменения
 количества штук";
 ?>

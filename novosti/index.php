@@ -1,19 +1,14 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Новости");
-?>
-
-
-
-
-	<section id="blog-full-width">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<?$APPLICATION->IncludeComponent(
-	"bitrix:news", 
-	"news", 
-	array(
+?><section id="blog-full-width">
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			 <?$APPLICATION->IncludeComponent(
+	"bitrix:news",
+	"news",
+	Array(
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
@@ -27,20 +22,15 @@ $APPLICATION->SetTitle("Новости");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => "news",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "j F Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
-		"DETAIL_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"DETAIL_FIELD_CODE" => array(0=>"",1=>"",),
 		"DETAIL_PAGER_SHOW_ALL" => "Y",
 		"DETAIL_PAGER_TEMPLATE" => "",
 		"DETAIL_PAGER_TITLE" => "Страница",
-		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"DETAIL_PROPERTY_CODE" => array(0=>"",1=>"",),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -53,14 +43,8 @@ $APPLICATION->SetTitle("Новости");
 		"IBLOCK_TYPE" => "Information",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"LIST_ACTIVE_DATE_FORMAT" => "j F Y",
-		"LIST_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"LIST_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"LIST_FIELD_CODE" => array(0=>"",1=>"",),
+		"LIST_PROPERTY_CODE" => array(0=>"",1=>"",),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -90,55 +74,45 @@ $APPLICATION->SetTitle("Новости");
 		"USE_RSS" => "N",
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
-		"COMPONENT_TEMPLATE" => "news",
-		"VARIABLE_ALIASES" => array(
-			"SECTION_ID" => "SECTION_ID",
-			"ELEMENT_ID" => "ELEMENT_ID",
-		)
-	),
-	false
+		"VARIABLE_ALIASES" => array("SECTION_ID"=>"SECTION_ID","ELEMENT_ID"=>"ELEMENT_ID",)
+	)
 );?>
-
-					
-
-
+		</div>
+		<div class="col-md-4">
+			<div class="sidebar">
+				<div class="search widget">
+					<form action="" method="get" class="searchform" role="search">
+						<div class="input-group">
+ <input type="text" class="form-control" placeholder="Search for..."> <span class="input-group-btn"> <button class="btn btn-default" type="button"> <i class="ion-search"></i> </button> </span>
+						</div>
+						 <!-- /input-group -->
+					</form>
 				</div>
-				<div class="col-md-4">
-					<div class="sidebar">
-						<div class="search widget">
-							<form action="" method="get" class="searchform" role="search">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search for...">
-									<span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"> <i class="ion-search"></i> </button>
-                                            </span>
-								</div><!-- /input-group -->
-							</form>
+				<div class="author widget">
+					 <!--							<img class="img-responsive" src="../images/author/author-bg.jpg">-->
+					<div class="author-body text-center">
+						<div class="author-bio">
+							 <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	"",
+	Array(
+		"AREA_FILE_SHOW" => "page",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => ""
+	)
+);?><br>
+							 <?$APPLICATION->IncludeComponent(
+	"miet:feedback.error",
+	"",
+	Array(
+		
+	)
+);?><br>
 						</div>
-						<div class="author widget">
-<!--							<img class="img-responsive" src="../images/author/author-bg.jpg">-->
-							<div class="author-body text-center">
-
-								<div class="author-bio">
-                                    <?$APPLICATION->IncludeComponent(
-                                        "bitrix:main.include",
-                                        "",
-                                        Array(
-                                            "AREA_FILE_SHOW" => "page",
-                                            "AREA_FILE_SUFFIX" => "inc",
-                                            "EDIT_TEMPLATE" => ""
-                                        )
-                                    );?>
-								</div>
-							</div>
-						</div>
-
-
-						
-
 					</div>
 				</div>
 			</div>
-		</div></section>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+		</div>
+	</div>
+</div>
+ </section><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

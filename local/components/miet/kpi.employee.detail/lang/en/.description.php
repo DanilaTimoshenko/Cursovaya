@@ -8,8 +8,8 @@
 ?>
 <?
 $MESS['NAME_INTRANET'] = "Corporate portal";
-$MESS['NAME_BS'] = "BS";
-$MESS['NAME_COMPONENT'] = "Putting employees BS values";
-$MESS['DESCRIPTION_COMPONENT'] = "Form filling BS values
+$MESS['NAME_KPI'] = "KPI";
+$MESS['NAME_COMPONENT'] = "Putting employees KPI values";
+$MESS['DESCRIPTION_COMPONENT'] = "Form filling KPI values
 staff";
 ?>

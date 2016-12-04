@@ -17,11 +17,11 @@ $arComponentDescription = array(
         "ID" => "intranet",
         "NAME" => GetMessage("NAME_INTRANET"),
         "CHILD" => array(
-            "ID" => "BS",
-            "NAME" => GetMessage("NAME_BS"),
+            "ID" => "KPI",
+            "NAME" => GetMessage("NAME_KPI"),
             "SORT" => 10,
             "CHILD" => array(
-                "ID" => "BSValue",
+                "ID" => "KPIValue",
             )
         ),
     ),

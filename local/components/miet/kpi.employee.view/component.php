@@ -1,20 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: student01
- * Date: 19.11.2016
- * Time: 15:23
- */
-?>
-<?php
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 ###Инициализация глобальных переменных Битрикс###
 global $DB;
 /** @global CUser $USER */
 global $USER;
 ###
-\Bitrix\Main\Loader::includeModule('miet.bs');
-use MIET\BS;
+\Bitrix\Main\Loader::includeModule('miet.kpi');
+use MIET\KPI;
 ###Проверка входных параметров на корректность и приведение их к нужному виду###
 $arParams["USER_ID"] = intval($arParams["USER_ID"]);
 if(!$arParams["USER_ID"]) {
@@ -33,16 +25,7 @@ if(strlen($arParams["DATE_FORMAT"]) <= 0) {
     $arParams["DATE_FORMAT"] = $DB->DateFormatToPHP(CSite::GetDateFormat("SHORT"));
 }
 ###
-###Сохранение значений BS###
-if($_REQUEST['saveBS']) {
-    if(BS\BSManager::SetBSEmployee($arParams["USER_ID"],
-        $_REQUEST['UF_PERIOD'], $_REQUEST['BS'])) {
-        $arResult['OK'] = 'Изменения успешно сохранены';
-    } else {
-        $arResult['ERROR'] = 'Ошибка при сохранении';
-    }
-}
-###
+
 ###Получение данных из БД###
 if($this->StartResultCache(false, array(($arParams["CACHE_GROUPS"] === "N"
     ? false: $USER->GetGroups()), $bUSER_HAVE_ACCESS))) {
@@ -54,14 +37,22 @@ if($this->StartResultCache(false, array(($arParams["CACHE_GROUPS"] === "N"
         }
         $arResult['PERIOD_ITEMS'][] = array(
             'SELECTED' => ($_REQUEST['UF_PERIOD'] == '01.' . $i . '.' .
-                date('Y')) ? 'selected' : '', //Выбираем ранее выбранный, либо текущий            месяц
+                date('Y')) ? 'selected' : '', //Выбираем ранее выбранный, либо текущий месяц
  'VALUE' => '01.' . $i . '.' . date('Y')
  );
  }
     ###
-    ###Получение списка показателей BS для сотрудника###
+    ###Получение списка показателей KPI для сотрудника###
     $arResult['ITEMS'] =
-        BS\BSManager::GetBSEmployee($arParams["USER_ID"]);
+        KPI\KPIManager::GetKPIEmployee($arParams["USER_ID"]);
+
+
+    foreach($arResult['ITEMS'] as &$arKPI) {
+        $arValue = KPI\KPIManager::GetKPIEmployeeValue($arKPI["ID"], $arParams["USER_ID"], $_REQUEST['UF_PERIOD']);
+        $arKPI["KPI_ID"] = $arValue["ID"];
+        $arKPI["KPI_VALUE"] = $arValue["UF_VALUE"];
+    }
+
     ###Кэширование значения элементов массива $arResult###
     $this->SetResultCacheKeys(array(
         "ITEMS",

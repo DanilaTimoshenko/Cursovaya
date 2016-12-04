@@ -28,8 +28,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
         <?foreach($arResult["ITEMS"] as $arItem):?>
             <tr>
                 <td><?=$arItem['NAME'];?></td>
-                <td><input type="text" name="BS[<?=$arItem['ID']?>]"
-                           value="<?=$_REQUEST['bs-'.$arItem['ID']];?>"></td>
+                <td><input type="text" name="KPI[<?=$arItem['ID']?>]"
+                           value="<?=$_REQUEST['kpi-'.$arItem['ID']];?>"></td>
                 <td>
                     <?foreach($arItem['PROPERTY_REGULATIONS_VALUE']
                               as $fileRegulation):?>
@@ -41,7 +41,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
         <?endforeach;?>
         <tr>
             <td colspan="3">
-                <input type="submit" name="saveBS"
+                <input type="submit" name="saveKPI"
                        value="Сохранить">
                 <input type="cancel" value="Очистить">
             </td>

@@ -9,7 +9,7 @@
 <?
 IncludeModuleLangFile(__FILE__);
 Bitrix\Main\Loader::includeModule("iblock");
-require_once "lib/bsdepartment.php";
-require_once "lib/bsemployee.php";
-require_once "lib/bsmanager.php";
+require_once "lib/kpidepartment.php";
+require_once "lib/kpiemployee.php";
+require_once "lib/kpimanager.php";
 ?>

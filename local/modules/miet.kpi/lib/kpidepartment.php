@@ -1,9 +1,9 @@
 <?php
-namespace MIET\BS;
+namespace MIET\KPI;
 use Bitrix\Main\Entity;
 use Bitrix\Main\Localization\Loc;
 Loc::loadMessages(__FILE__);
-class BSDepartmentTable extends Entity\DataManager {
+class KPIDepartmentTable extends Entity\DataManager {
     public static function getFilePath()
     {
         return __FILE__;
@@ -11,9 +11,9 @@ class BSDepartmentTable extends Entity\DataManager {
     /*Название таблицы HL в БД*/
     public static function getTableName()
     {
-        return 't_department_bs';
+        return 't_department_kpi';
     }
-    /*Описание полей сущности (соответсвуют полям HL DepartmentBS)*/
+    /*Описание полей сущности (соответсвуют полям HL DepartmentKPI)*/
     public static function getMap()
     {
         return array(
@@ -21,11 +21,11 @@ class BSDepartmentTable extends Entity\DataManager {
                 'data_type' => 'integer',
                 'primary' => true,
                 'autocomplete' => true,
-                'title' => Loc::getMessage('BS_ENTITY_ID_FIELD')
+                'title' => Loc::getMessage('KPI_ENTITY_ID_FIELD')
             ),
-            'UF_BS' => array(
+            'UF_KPI' => array(
                 'data_type' => 'integer',
-                'required' => true,'title' => Loc::getMessage('BS_ENTITY_UF_BS_FIELD')
+                'required' => true,'title' => Loc::getMessage('KPI_ENTITY_UF_KPI_FIELD')
             ),
             'UF_VALUE' => array(
                 'data_type' => 'float',
@@ -35,46 +35,46 @@ class BSDepartmentTable extends Entity\DataManager {
  'validateValue' //Название метода-валидатора вданном классе
  ),
 'title' =>
-Loc::getMessage('BS_ENTITY_UF_VALUE_FIELD')
+Loc::getMessage('KPI_ENTITY_UF_VALUE_FIELD')
  ),
  'UF_DEPARTMENT' => array(
         'data_type' => 'integer',
         'required' => true,
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_DEPARTMENT_FIELD')
+            Loc::getMessage('KPI_ENTITY_UF_DEPARTMENT_FIELD')
     ),
  'UF_CREATED_BY' => array(
         'data_type' => 'integer',
         'required' => true,
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_CREATED_BY_FIELD')
+            Loc::getMessage('KPI_ENTITY_UF_CREATED_BY_FIELD')
     ),
  'UF_CREATED' => array(
         'data_type' => 'datetime',
         'required' => true,
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_CREATED_FIELD')
+            Loc::getMessage('KPI_ENTITY_UF_CREATED_FIELD')
     ),
  'UF_CHANGED_BY' => array(
         'data_type' => 'integer',
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_CHANGED_BY_FIELD')
+            Loc::getMessage('KPI_ENTITY_UF_CHANGED_BY_FIELD')
     ),
  'UF_CHANGED' => array(
         'data_type' => 'datetime',
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_CHANGED_FIELD'),
+            Loc::getMessage('KPI_ENTITY_UF_CHANGED_FIELD'),
     ),
  'UF_PERIOD' => array(
         'data_type' => 'date',
         'title' =>
-            Loc::getMessage('BS_ENTITY_UF_PERIOD_FIELD'),
+            Loc::getMessage('KPI_ENTITY_UF_PERIOD_FIELD'),
     ),
  //Описываем все связи с другими таблицами (внешние ключи)
  new Entity\ReferenceField(
-     'UF_BS',
+     'UF_KPI',
      'Bitrix\Iblock\ElementTable',
-     array('=this.UF_BS' => 'ref.ID')
+     array('=this.UF_KPI' => 'ref.ID')
  ),
  new Entity\ReferenceField(
      'UF_DEPARTMENT',

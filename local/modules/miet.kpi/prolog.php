@@ -7,5 +7,5 @@
  */
 ?>
 <?
-define("ADMIN_MODULE_NAME", "miet.bs");
+define("ADMIN_MODULE_NAME", "miet.kpi");
 ?>

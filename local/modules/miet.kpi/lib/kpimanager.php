@@ -1,5 +1,5 @@
 <?php
-namespace MIET\BS;
+namespace MIET\KPI;
 use Bitrix\Main\Application;
 use Bitrix\Main\Entity;
 use Bitrix\Main\Entity\Event;
@@ -7,10 +7,10 @@ use Bitrix\Main\Localization\Loc;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\UserTable;
 Loc::loadMessages(__FILE__);
-class BSManager {
-    const IBLOCK_CODE_BS = 'bs';
+class KPIManager {
+    const IBLOCK_CODE_KPI = 'kpi';
     const IBLOCK_CODE_DEPARTMENTS = 'departments';
-    public static function GetBS(
+    public static function GetKPI(
         $arOrder = array('SORT' => 'ASC'),
         $arFilter = array(),
         $arGroupBy = false,
@@ -18,10 +18,10 @@ class BSManager {
         $arSelectFields = array('ID', 'NAME')
     ) {
         $elements = array();
-        //Получаем ID инфоблока BS по его символьному коду
+        //Получаем ID инфоблока KPI по его символьному коду
         $rsIblock = \CIBlock::GetList(
             array(),
-            array('CODE' => self::IBLOCK_CODE_BS, 'SITE_ID' =>
+            array('CODE' => self::IBLOCK_CODE_KPI, 'SITE_ID' =>
                 SITE_ID)
         );
         $arIblock = $rsIblock->GetNext();
@@ -44,7 +44,7 @@ class BSManager {
  }
  return $elements;
  }
-    public static function GetBSEmployee($idEmployee) {
+    public static function GetKPIEmployee($idEmployee) {
         if(!$idEmployee) {
             return array();
         }
@@ -57,8 +57,8 @@ class BSManager {
                 'ID' => $idEmployee
             )
         ))->fetch();
-        //Получаем список всех BS данных подразделений
-        return self::GetBS(
+        //Получаем список всех KPI данных подразделений
+        return self::GetKPI(
             array('NAME' => 'asc'),
             array('PROPERTY_DEPARTMENT.ID' => $arDepartmentsUser),
             false,
@@ -67,10 +67,10 @@ class BSManager {
                 'PROPERTY_WEIGHT', 'PROPERTY_REGULATIONS')
         );
     }
-    public static function SetBSEmployee($idEmployee, $period,
-                                          $arBSValues) {
-        if(!$idEmployee || !is_array($arBSValues) ||
-            !count($arBSValues)) {
+    public static function SetKPIEmployee($idEmployee, $period,
+                                          $arKPIValues) {
+        if(!$idEmployee || !is_array($arKPIValues) ||
+            !count($arKPIValues)) {
             return array();
         }
         global $USER;
@@ -79,10 +79,10 @@ class BSManager {
         //Начинаем транзакцию
         $db->startTransaction();
 
-        foreach($arBSValues as $BS => $BSValue) {
+        foreach($arKPIValues as $KPI => $KPIValue) {
             $arValue = array(
-                'UF_VALUE' => $BSValue,
-                'UF_BS' => $BS,
+                'UF_VALUE' => $KPIValue,
+                'UF_KPI' => $KPI,
                 'UF_EMPLOYEE' => $idEmployee,
                 'UF_CREATED_BY' => $USER->GetID(),
                 'UF_CREATED' => new
@@ -91,12 +91,12 @@ class BSManager {
                 \Bitrix\Main\Type\DateTime($period. ' 00:00:00')
             );
 
-            $bs = self::GetBSEmployeeValue($BS, $idEmployee, $period );
-            if(isset($bs["ID"])) {
-                $result = BSEmployeeTable::update($bs["ID"], $arValue);
+            $kpi = self::GetKPIEmployeeValue($KPI, $idEmployee, $period );
+            if(isset($kpi["ID"])) {
+                $result = KPIEmployeeTable::update($kpi["ID"], $arValue);
             }
             else {
-                $result = BSEmployeeTable::add($arValue);
+                $result = KPIEmployeeTable::add($arValue);
             }
 
             if (!$result->isSuccess()) {
@@ -110,13 +110,13 @@ class BSManager {
         }
     }
 
-    public static function GetBSEmployeeValue($idBS, $idEmployee, $period)
+    public static function GetKPIEmployeeValue($idKPI, $idEmployee, $period)
     {
-        return BSEmployeeTable::getList(array(
+        return KPIEmployeeTable::getList(array(
             "select" => array("ID", "UF_VALUE"),
             "filter" => array(
                 "UF_EMPLOYEE" => $idEmployee,
-                "UF_BS" => $idBS,
+                "UF_KPI" => $idKPI,
                 "UF_PERIOD" => \Bitrix\Main\Type\DateTime::createFromUserTime($period)
             )
         ))->fetch();

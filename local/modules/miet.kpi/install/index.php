@@ -14,10 +14,10 @@ IncludeModuleLangFile(__FILE__);
 парнера и именем модуля знак подчеркивания
 *Класс модуля должен быть наследником системного класса модулей
 Битрикс CModule*/
-Class miet_bs extends CModule {
+Class miet_kpi extends CModule {
     /*Обязательные свойства объекта модуля*/
-    const MODULE_ID = "miet.bs";
-    var $MODULE_ID = "miet.bs";
+    const MODULE_ID = "miet.kpi";
+    var $MODULE_ID = "miet.kpi";
     var $MODULE_VERSION;
     var $MODULE_VERSION_DATE;
     var $MODULE_NAME;
@@ -31,11 +31,11 @@ Class miet_bs extends CModule {
         $this->MODULE_VERSION = $arModuleVersion["VERSION"];
         $this->MODULE_VERSION_DATE =
             $arModuleVersion["VERSION_DATE"];
-        $this->MODULE_NAME = GetMessage("miet.bs_MODULE_NAME");
+        $this->MODULE_NAME = GetMessage("miet.kpi_MODULE_NAME");
         $this->MODULE_DESCRIPTION =
-            GetMessage("miet.bs_MODULE_DESC");
-        $this->PARTNER_NAME = GetMessage("miet.bs_PARTNER_NAME");
-        $this->PARTNER_URI = GetMessage("miet.bs_PARTNER_URI");
+            GetMessage("miet.kpi_MODULE_DESC");
+        $this->PARTNER_NAME = GetMessage("miet.kpi_PARTNER_NAME");
+        $this->PARTNER_URI = GetMessage("miet.kpi_PARTNER_URI");
     }
     /*Метод регистрации событий модуля и их обработчиков*/
     function InstallEvents()
